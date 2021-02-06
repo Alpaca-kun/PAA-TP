@@ -10,6 +10,7 @@ def main():
         u -= 1
         v -= 1 # adapting to initial value zero
         adjList[u].append((v, w))
+        adjList[v].append((u, w))
 
     distance = [INF for u in range(V)]
     distance[0] = 0 # source

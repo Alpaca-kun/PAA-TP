@@ -10,6 +10,9 @@ def main():
         u -= 1
         v -= 1 # adapting to initial value zero
         adjList[u].append((v + V, w))
+        adjList[u + V].append((v, w))
+        adjList[v].append((u + V, w))
+        adjList[v + V].append((u, w))
 
     distance = [INF for u in range(2*V)]
     distance[0] = 0 # source
@@ -24,7 +27,9 @@ def main():
             distance[v] = distance[u] + w
             heappush(pq, (distance[v], v))
 
-    for u in range(2*V):
-        print("SSSP({}, {}) = {}".format(0, u, distance[u]))
+    if distance[2*V-1] == INF:
+        print(":(")
+    else:
+        print(distance[2*V-1])
 
 main()
