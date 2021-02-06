@@ -50,13 +50,22 @@ void dijkstra() {
 }
 
 int main () {
-    int m, u, v, w;
-    cin >> n >> m;
-    for (int i = 0; i < m; i++) {
-        cin >> u >> v >> w; 
-        u -= 1; v -=1;// Because the nodes starts from 1
-        adj[u].push_back(make_pair(v + m, w));
-        adj[v + m].push_back(make_pair(u, w));
+    // int m, u, v, w;
+    // cin >> n >> m;
+    // for (int i = 0; i < m; i++) {
+    //     cin >> u >> v >> w; 
+    //     u -= 1; v -=1;// Because the nodes starts from 1
+    //     adj[u + m].push_back(make_pair(v + m, w));
+    // }
+
+    int k, u, v, c;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> u >> k;
+        for (int j = 0; j < k; j++) {
+            cin >> v >> c;
+            adj[u].push_back(make_pair(v, c));
+        }
     }
 
     dijkstra();
